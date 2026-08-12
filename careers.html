@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | DR. KURMI'S PHARMAGRO LLP — Join Our Team</title>
+    <meta name="description" content="Explore exciting career opportunities at DR. KURMI'S PHARMAGRO LLP. We are hiring Sales Executives, Data Analysts and Distributors across India.">
+    <meta name="keywords" content="Dr Kurmi Pharmagro Careers, Pharma Jobs India, Sales Executive Pharma, Data Analyst Healthcare, Pharma Distributor India">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💊</text></svg>">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Careers Page Extra Styles -->
+    <style>
+        /* ── Careers Hero ── */
+        .careers-hero {
+            background: linear-gradient(135deg, var(--navy-bg) 0%, #071832 60%, #0a2444 100%);
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .careers-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; left: -120px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0,150,199,0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .careers-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; right: -100px;
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .careers-hero-inner {
+            position: relative; z-index: 2;
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .careers-hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,150,199,0.15);
+            border: 1px solid rgba(0,150,199,0.3);
+            color: var(--accent-cyan);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+        .careers-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .careers-hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--accent-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .careers-hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 580px;
+            margin: 0 auto 40px;
+        }
+        .careers-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .ch-stat { text-align: center; }
+        .ch-stat .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .ch-stat .lbl {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ── Why Join Us ── */
+        .why-join { padding: 90px 0 60px; background: var(--bg-light); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .why-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-emerald));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+        .why-card:hover::before { opacity: 1; }
+        .why-icon {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 1.5rem;
+        }
+        .why-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--text-heading); }
+        .why-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* ── Open Positions ── */
+        .open-positions { padding: 80px 0 100px; background: #f0f7ff; }
+        .positions-grid { display: grid; gap: 28px; margin-top: 52px; }
+
+        /* Job Card */
+        .job-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            display: grid;
+            grid-template-columns: 1fr auto;
+        }
+        .job-card:hover { box-shadow: 0 20px 50px -10px rgba(0,150,199,0.14); border-color: rgba(0,150,199,0.3); transform: translateY(-3px); }
+        .job-card-body { padding: 36px; }
+        .job-card-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px; }
+        .job-icon-box {
+            width: 58px; height: 58px;
+            border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .job-title-group h3 { font-size: 1.25rem; color: var(--text-heading); margin-bottom: 4px; }
+        .job-dept { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
+        .job-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .job-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 600;
+        }
+        .job-tag.location { background: #e0f2fe; color: #0369a1; }
+        .job-tag.type     { background: #dcfce7; color: #15803d; }
+        .job-tag.openings { background: #fef3c7; color: #b45309; }
+        .job-tag.exp      { background: #f3e8ff; color: #7c3aed; }
+        .job-desc { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; margin-bottom: 20px; }
+        .job-requirements h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 12px; }
+        .job-req-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .job-req-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-body); }
+        .job-req-list li i { color: var(--accent-emerald); margin-top: 2px; flex-shrink: 0; }
+        .job-card-action {
+            padding: 36px 32px 36px 0;
+            display: flex; flex-direction: column;
+            align-items: flex-end; justify-content: space-between;
+        }
+        .openings-badge {
+            display: flex; flex-direction: column; align-items: center;
+            background: var(--navy-bg); color: #fff;
+            border-radius: var(--radius-md); padding: 16px 20px;
+            text-align: center; min-width: 90px;
+        }
+        .openings-badge .badge-num { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; }
+        .openings-badge .badge-lbl { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-top: 4px; }
+        .apply-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: #fff; font-weight: 600; font-size: 0.88rem;
+            padding: 12px 22px; border-radius: var(--radius-sm);
+            border: none; cursor: pointer; transition: var(--transition); text-decoration: none;
+        }
+        .apply-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,150,199,0.35); }
+        .apply-btn.distributor { background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-emerald-dark) 100%); }
+        .apply-btn.distributor:hover { box-shadow: 0 8px 20px rgba(16,185,129,0.35); }
+
+        /* ── Apply Modal ── */
+        .apply-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(7,15,30,0.75);
+            backdrop-filter: blur(6px);
+            z-index: 9000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .apply-modal-overlay.active { opacity: 1; pointer-events: all; }
+        .apply-modal-box {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            width: 100%; max-width: 560px;
+            max-height: 90vh; overflow-y: auto;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+        }
+        .apply-modal-overlay.active .apply-modal-box { transform: translateY(0); }
+        .apply-modal-header {
+            padding: 28px 32px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .apply-modal-header h3 { font-size: 1.15rem; color: var(--text-heading); }
+        .apply-modal-header .close-btn { background: none; border: none; font-size: 1.4rem; color: var(--text-muted); cursor: pointer; transition: var(--transition); }
+        .apply-modal-header .close-btn:hover { color: var(--text-heading); }
+        .apply-modal-body { padding: 28px 32px 32px; }
+        .apply-position-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--primary-light); color: var(--primary-hover);
+            font-size: 0.8rem; font-weight: 600;
+            padding: 6px 14px; border-radius: 50px; margin-bottom: 24px;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 18px; }
+        .form-label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text-heading); margin-bottom: 7px; }
+        .form-control {
+            width: 100%; padding: 11px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem; color: var(--text-body);
+            background: #fff; transition: var(--transition); outline: none;
+        }
+        .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,150,199,0.1); }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+        select.form-control { cursor: pointer; }
+        .submit-btn {
+            width: 100%; padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: #fff; font-weight: 700; font-size: 0.95rem;
+            border: none; border-radius: var(--radius-sm);
+            cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: 8px;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,150,199,0.35); }
+
+        /* ── Toast ── */
+        .careers-toast {
+            position: fixed; bottom: 32px; right: 32px;
+            background: var(--navy-bg); color: #fff;
+            border-radius: var(--radius-md); padding: 18px 24px;
+            display: flex; align-items: center; gap: 14px;
+            z-index: 99999;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 360px;
+        }
+        .careers-toast.show { transform: translateX(0); }
+        .careers-toast i { font-size: 1.4rem; color: var(--accent-emerald); }
+        .careers-toast strong { display: block; font-size: 0.95rem; }
+        .careers-toast span { font-size: 0.8rem; color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            .job-card { grid-template-columns: 1fr; }
+            .job-card-action { padding: 0 28px 28px 28px; flex-direction: row; align-items: center; }
+            .form-row { grid-template-columns: 1fr; }
+            .careers-hero-stats { gap: 24px; }
+            .apply-modal-body, .apply-modal-header { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-info">
+                <div class="top-bar-item"><i class="bi bi-geo-alt-fill"></i><span>Borivali East, Mumbai - 400066</span></div>
+                <div class="top-bar-item"><i class="bi bi-envelope-check-fill"></i><span>kurmipa25@gmail.com</span></div>
+                <div class="top-bar-item"><i class="bi bi-telephone-fill"></i><span>+91 72081 06296</span></div>
+            </div>
+            <div class="top-bar-badges">
+                <span class="badge-tag"><i class="bi bi-shield-check"></i> WHO-GMP Sourced</span>
+                <span class="badge-tag"><i class="bi bi-award-fill"></i> ISO 9001:2015</span>
+                <span class="badge-tag"><i class="bi bi-check-circle-fill"></i> FSSAI Certified</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="brand-logo">
+                <img src="assets/logo.jpg" alt="DR. KURMI'S PHARMAGRO LLP" class="brand-logo-img">
+                <div class="logo-text">
+                    <span class="brand-name">DR. KURMI'S PHARMAGRO</span>
+                    <span class="brand-tag">B2C &amp; COMMERCIAL PRODUCTS</span>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="index.html#leadership" class="nav-link">Leadership</a></li>
+                <li><a href="index.html#catalog" class="nav-link">Products</a></li>
+                <li><a href="index.html#quality" class="nav-link">Quality</a></li>
+                <li><a href="index.html#b2b" class="nav-link">B2B Portal</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="careers.html" class="nav-link active">Careers</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="index.html#contact" class="btn btn-primary btn-sm">
+                    <i class="bi bi-file-earmark-text"></i> Request Quote
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Careers Hero ── -->
+    <section class="careers-hero" id="careers-top">
+        <div class="container">
+            <div class="careers-hero-inner">
+                <div class="careers-hero-tag">
+                    <i class="bi bi-briefcase-fill"></i> We're Hiring
+                </div>
+                <h1>Build Your Career in <span>Pharmaceutical Excellence</span></h1>
+                <p>Join DR. KURMI'S PHARMAGRO LLP and be part of a growing healthcare company that values ethics, quality and innovation. We're looking for passionate people to help us make a difference.</p>
+                <div class="careers-hero-stats">
+                    <div class="ch-stat"><div class="num">3</div><div class="lbl">Open Positions</div></div>
+                    <div class="ch-stat"><div class="num">4</div><div class="lbl">Total Openings</div></div>
+                    <div class="ch-stat"><div class="num">MH+</div><div class="lbl">Primary Location</div></div>
+                    <div class="ch-stat"><div class="num">100%</div><div class="lbl">Growth Focused</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Why Join Us ── -->
+    <section class="why-join">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="bi bi-stars"></i> Why Dr. Kurmi's Pharmagro</div>
+                <h2 class="section-title">A Place Where You Grow</h2>
+                <p class="section-subtitle">We invest in people who are driven by purpose, not just profit.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon" style="background:#e0f2fe;"><i class="bi bi-graph-up-arrow" style="color:#0369a1;"></i></div>
+                    <h4>Career Growth</h4>
+                    <p>Clear pathways to senior roles with merit-based promotions in a fast-growing company.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon" style="background:#dcfce7;"><i class="bi bi-shield-check" style="color:#15803d;"></i></div>
+                    <h4>Ethical Workplace</h4>
+                    <p>We operate with full transparency, integrity and CDSCO-compliant business standards.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon" style="background:#fef3c7;"><i class="bi bi-mortarboard-fill" style="color:#b45309;"></i></div>
+                    <h4>Learning Culture</h4>
+                    <p>Continuous training on pharmaceutical products, regulations and market strategies.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon" style="background:#f3e8ff;"><i class="bi bi-people-fill" style="color:#7c3aed;"></i></div>
+                    <h4>Team First</h4>
+                    <p>A collaborative, supportive team led by clinical and scientific experts.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon" style="background:#fce7f3;"><i class="bi bi-cash-coin" style="color:#be185d;"></i></div>
+                    <h4>Competitive Pay</h4>
+                    <p>Market-competitive salaries with performance incentives and bonuses.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon" style="background:#ecfdf5;"><i class="bi bi-globe-central-south-asia" style="color:#047857;"></i></div>
+                    <h4>National Impact</h4>
+                    <p>Work on products that reach 15+ Indian states and international markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Open Positions ── -->
+    <section class="open-positions" id="positions">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i class="bi bi-briefcase-fill"></i> Open Positions</div>
+                <h2 class="section-title">Current Job Openings</h2>
+                <p class="section-subtitle">Explore the roles below and apply directly. We review all applications within 3–5 business days.</p>
+            </div>
+
+            <div class="positions-grid">
+
+                <!-- Job 1: Sales Executive -->
+                <div class="job-card">
+                    <div class="job-card-body">
+                        <div class="job-card-header">
+                            <div class="job-icon-box" style="background:#e0f2fe;">
+                                <i class="bi bi-briefcase-fill" style="color:#0369a1;"></i>
+                            </div>
+                            <div class="job-title-group">
+                                <h3>Sales Executive — Pharma</h3>
+                                <div class="job-dept">Sales &amp; Business Development</div>
+                            </div>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag location"><i class="bi bi-geo-alt-fill"></i> Maharashtra, India</span>
+                            <span class="job-tag type"><i class="bi bi-clock-fill"></i> Full-Time</span>
+                            <span class="job-tag openings"><i class="bi bi-people-fill"></i> 2 Openings</span>
+                            <span class="job-tag exp"><i class="bi bi-bar-chart-fill"></i> 1–4 Years Experience</span>
+                        </div>
+                        <p class="job-desc">
+                            We are looking for energetic and target-driven <strong>Pharma Sales Executives</strong> to expand KURMI PHARMAGRO's presence across Maharashtra and nearby states. You will build and manage relationships with doctors, chemists, hospitals and distributors.
+                        </p>
+                        <div class="job-requirements">
+                            <h5>Key Requirements</h5>
+                            <ul class="job-req-list">
+                                <li><i class="bi bi-patch-check-fill"></i> B.Sc. / B.Pharma / MBA (Marketing) preferred</li>
+                                <li><i class="bi bi-patch-check-fill"></i> 1–4 years experience in pharmaceutical sales</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Strong communication and relationship-building skills</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Knowledge of pharma product categories (OTC / Rx)</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Own two-wheeler and willingness to travel</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Proficiency in Marathi / Hindi; English a plus</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="job-card-action">
+                        <div class="openings-badge">
+                            <span class="badge-num">2</span>
+                            <span class="badge-lbl">Openings</span>
+                        </div>
+                        <button class="apply-btn" id="applyBtn1" onclick="openApplyModal('Sales Executive — Pharma')">
+                            <i class="bi bi-send-fill"></i> Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job 2: Data Analyst -->
+                <div class="job-card">
+                    <div class="job-card-body">
+                        <div class="job-card-header">
+                            <div class="job-icon-box" style="background:#f3e8ff;">
+                                <i class="bi bi-bar-chart-line-fill" style="color:#7c3aed;"></i>
+                            </div>
+                            <div class="job-title-group">
+                                <h3>Data Analyst — Healthcare &amp; Pharma</h3>
+                                <div class="job-dept">Data, Analytics &amp; Insights</div>
+                            </div>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag location"><i class="bi bi-geo-alt-fill"></i> Maharashtra / Remote</span>
+                            <span class="job-tag type"><i class="bi bi-clock-fill"></i> Full-Time</span>
+                            <span class="job-tag openings"><i class="bi bi-people-fill"></i> 1 Opening</span>
+                            <span class="job-tag exp"><i class="bi bi-bar-chart-fill"></i> 1–3 Years Experience</span>
+                        </div>
+                        <p class="job-desc">
+                            We are seeking a detail-oriented <strong>Data Analyst</strong> to help us make smarter business decisions through data. You will analyse sales trends, product performance, market data and operational metrics to generate insights that drive growth.
+                        </p>
+                        <div class="job-requirements">
+                            <h5>Key Requirements</h5>
+                            <ul class="job-req-list">
+                                <li><i class="bi bi-patch-check-fill"></i> B.Sc. Statistics / Computer Science / Biotechnology or related field</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Proficiency in MS Excel, Google Sheets and basic SQL</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Familiarity with Power BI / Tableau or similar tools</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Ability to interpret and communicate insights clearly</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Knowledge of pharma / healthcare domain is a plus</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Strong attention to detail and analytical mindset</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="job-card-action">
+                        <div class="openings-badge">
+                            <span class="badge-num">1</span>
+                            <span class="badge-lbl">Opening</span>
+                        </div>
+                        <button class="apply-btn" id="applyBtn2" onclick="openApplyModal('Data Analyst — Healthcare and Pharma')">
+                            <i class="bi bi-send-fill"></i> Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job 3: Distributor -->
+                <div class="job-card">
+                    <div class="job-card-body">
+                        <div class="job-card-header">
+                            <div class="job-icon-box" style="background:#dcfce7;">
+                                <i class="bi bi-truck" style="color:#15803d;"></i>
+                            </div>
+                            <div class="job-title-group">
+                                <h3>Authorised Distributor Partner</h3>
+                                <div class="job-dept">Distribution &amp; Channel Partner</div>
+                            </div>
+                        </div>
+                        <div class="job-tags">
+                            <span class="job-tag location"><i class="bi bi-geo-alt-fill"></i> Pan India</span>
+                            <span class="job-tag type"><i class="bi bi-clock-fill"></i> Business Partnership</span>
+                            <span class="job-tag openings"><i class="bi bi-people-fill"></i> 1 Opening</span>
+                            <span class="job-tag exp"><i class="bi bi-bar-chart-fill"></i> Established Distributors Preferred</span>
+                        </div>
+                        <p class="job-desc">
+                            KURMI PHARMAGRO is expanding its distribution network across India. We are inviting established <strong>Pharma Distributors</strong> to partner with us and carry our WHO-GMP sourced pharmaceutical, nutraceutical and healthcare product range in their territory.
+                        </p>
+                        <div class="job-requirements">
+                            <h5>Partner Eligibility</h5>
+                            <ul class="job-req-list">
+                                <li><i class="bi bi-patch-check-fill"></i> Valid Drug License (DL) and GST registration</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Established distribution network in target territory</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Adequate warehouse / cold storage infrastructure</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Experience in pharma or healthcare product distribution</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Financially stable with regular ordering capacity</li>
+                                <li><i class="bi bi-patch-check-fill"></i> Commitment to ethical and compliant trade practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="job-card-action">
+                        <div class="openings-badge" style="background:#064e3b;">
+                            <span class="badge-num">1</span>
+                            <span class="badge-lbl">Opening</span>
+                        </div>
+                        <button class="apply-btn distributor" id="applyBtn3" onclick="openApplyModal('Authorised Distributor Partner')">
+                            <i class="bi bi-send-fill"></i> Apply Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section style="background:linear-gradient(135deg,var(--navy-bg) 0%,#0a2444 100%);padding:80px 0;">
+        <div class="container" style="text-align:center;">
+            <div class="section-tag light" style="display:inline-flex;margin-bottom:20px;">
+                <i class="bi bi-envelope-fill"></i> Don't see your role?
+            </div>
+            <h2 style="color:#fff;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;">Send Us Your Resume Anyway</h2>
+            <p style="color:#94a3b8;max-width:520px;margin:0 auto 32px;">
+                We're always interested in talented people. Drop us an email with your CV and we'll be in touch when the right opportunity opens up.
+            </p>
+            <a href="mailto:kurmipa25@gmail.com?subject=Career Inquiry — KURMI PHARMAGRO" class="btn btn-primary">
+                <i class="bi bi-envelope-fill"></i> Email Your Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <img src="assets/logo.jpg" alt="DR. KURMI'S PHARMAGRO LLP" class="brand-logo-img">
+                        <div class="logo-text">
+                            <span class="brand-name">DR. KURMI'S PHARMAGRO</span>
+                            <span class="brand-tag">B2C &amp; COMMERCIAL PRODUCTS</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Quality-Focused Sourcing &amp; Reliable Product Partnerships across domestic and international pharmaceutical markets.</p>
+                </div>
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#catalog">Products</a></li>
+                        <li><a href="index.html#quality">Quality</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Open Positions</h5>
+                    <ul>
+                        <li><a href="#positions">Sales Executive (2 openings)</a></li>
+                        <li><a href="#positions">Data Analyst (1 opening)</a></li>
+                        <li><a href="#positions">Distributor Partner (1 opening)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h5>Contact Us</h5>
+                    <div class="footer-contact-item"><i class="bi bi-envelope-fill"></i><a href="mailto:kurmipa25@gmail.com">kurmipa25@gmail.com</a></div>
+                    <div class="footer-contact-item"><i class="bi bi-telephone-fill"></i><a href="tel:+917208106296">+91 72081 06296</a></div>
+                    <div class="footer-contact-item"><i class="bi bi-whatsapp"></i><a href="https://wa.me/917208106296" target="_blank" rel="noopener">WhatsApp Us</a></div>
+                    <div class="footer-contact-item"><i class="bi bi-geo-alt-fill"></i><span>Shop no.3, Uttam Villa, Road no. 10, Daulat Nagar, Borivali East, Mumbai - 400066</span></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 DR. KURMI'S PHARMAGRO LLP. All Rights Reserved.</span>
+                <span>Careers Page</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Apply Now Modal -->
+    <div class="apply-modal-overlay" id="applyModalOverlay">
+        <div class="apply-modal-box">
+            <div class="apply-modal-header">
+                <h3>Apply for Position</h3>
+                <button class="close-btn" onclick="closeApplyModal()">&times;</button>
+            </div>
+            <div class="apply-modal-body">
+                <div class="apply-position-tag">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span id="applyPositionLabel">Position</span>
+                </div>
+                <form id="applyForm" onsubmit="handleApplySubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="applyName" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-control" id="applyPhone" required placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="applyEmail" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">City / Location *</label>
+                            <input type="text" class="form-control" id="applyCity" required placeholder="City, State">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Years of Experience *</label>
+                            <select class="form-control" id="applyExp" required>
+                                <option value="">Select experience</option>
+                                <option value="Fresher (0-1 yr)">Fresher (0–1 yr)</option>
+                                <option value="1-2 Years">1–2 Years</option>
+                                <option value="2-4 Years">2–4 Years</option>
+                                <option value="4-7 Years">4–7 Years</option>
+                                <option value="7+ Years">7+ Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Highest Qualification</label>
+                        <input type="text" class="form-control" id="applyQual" placeholder="e.g. B.Pharma, B.Sc. Microbiology, MBA">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tell us about yourself</label>
+                        <textarea class="form-control" id="applyMessage" placeholder="Briefly describe your relevant experience and why you want to join KURMI PHARMAGRO..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="bi bi-send-fill"></i> Submit Application via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="careers-toast" id="careersToast">
+        <i class="bi bi-check-circle-fill"></i>
+        <div>
+            <strong>Application Submitted!</strong>
+            <span>We'll review and get back to you within 3–5 business days.</span>
+        </div>
+    </div>
+
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+
+        // Open Apply Modal
+        function openApplyModal(position) {
+            document.getElementById('applyPositionLabel').textContent = position;
+            document.getElementById('applyModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Apply Modal
+        function closeApplyModal() {
+            document.getElementById('applyModalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on backdrop click
+        document.getElementById('applyModalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeApplyModal();
+        });
+
+        // Form Submission → WhatsApp
+        function handleApplySubmit(e) {
+            e.preventDefault();
+            const pos  = document.getElementById('applyPositionLabel').textContent;
+            const name = document.getElementById('applyName').value;
+            const ph   = document.getElementById('applyPhone').value;
+            const em   = document.getElementById('applyEmail').value;
+            const city = document.getElementById('applyCity').value;
+            const exp  = document.getElementById('applyExp').value;
+            const qual = document.getElementById('applyQual').value;
+            const msg  = document.getElementById('applyMessage').value;
+
+            const waText = encodeURIComponent(
+                `*New Career Application — KURMI PHARMAGRO*\n\n` +
+                `*Position:* ${pos}\n` +
+                `*Name:* ${name}\n` +
+                `*Phone:* ${ph}\n` +
+                `*Email:* ${em}\n` +
+                `*City:* ${city}\n` +
+                `*Experience:* ${exp}\n` +
+                `*Qualification:* ${qual}\n` +
+                `*About:* ${msg}`
+            );
+
+            closeApplyModal();
+            document.getElementById('applyForm').reset();
+            window.open(`https://wa.me/917208106296?text=${waText}`, '_blank');
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('careersToast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 5000);
+        }
+    </script>
+</body>
+</html>

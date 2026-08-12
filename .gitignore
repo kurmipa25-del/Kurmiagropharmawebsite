@@ -1,0 +1,5 @@
+# Ignore log files and OS temp files
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
