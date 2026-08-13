@@ -299,17 +299,98 @@ function showToast(title, message) {
     }, 4500);
 }
 
-// Form Handlers
+// Form Handlers — EmailJS Integration
+// Service ID: service_04fnfch
+// B2B Template: template_klv1oog | RFQ Template: template_4z7ohg7
+// Target: info@kurmipharmagro.in
 function handleFormSubmit(event, formType) {
     event.preventDefault();
-    showToast("Inquiry Received!", `Thank you for contacting KURMI PHARMAGRO. Your ${formType} has been assigned to our B2B commercial desk.`);
-    
-    event.target.reset();
-    
-    if (document.getElementById("rfqModal").classList.contains("active")) {
-        closeModal("rfqModal");
+
+    const form = event.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnHTML = submitBtn.innerHTML;
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+
+    let templateId, templateParams;
+
+    if (formType === 'B2B Quick Inquiry') {
+        const name     = document.getElementById('b2bName').value.trim();
+        const bizType  = document.getElementById('b2bBusinessType').value;
+        const email    = document.getElementById('b2bEmail').value.trim();
+        const phone    = document.getElementById('b2bPhone').value.trim();
+        const products = document.getElementById('b2bProducts').value.trim() || 'Not specified';
+
+        templateId = 'template_klv1oog';
+        templateParams = {
+            from_name:  name,
+            from_email: email,
+            reply_to:   email,
+            to_name:    'KURMI PHARMAGRO Team',
+            message:
+                `B2B QUICK INQUIRY — KURMI PHARMAGRO\n` +
+                `${'='.repeat(40)}\n\n` +
+                `Name / Entity   : ${name}\n` +
+                `Business Type   : ${bizType}\n` +
+                `Email           : ${email}\n` +
+                `Phone / WhatsApp: ${phone}\n` +
+                `Products Wanted : ${products}\n\n` +
+                `Submitted via: kurmipharmagro.in`
+        };
+
+    } else if (formType === 'Formal Product Quote') {
+        const product       = document.getElementById('rfqProductName').value.trim() || 'All Portfolios';
+        const quantity      = document.getElementById('rfqQuantity').value.trim();
+        const company       = document.getElementById('rfqCompany').value.trim();
+        const contactPerson = document.getElementById('rfqContactPerson').value.trim();
+        const email         = document.getElementById('rfqEmail').value.trim();
+        const location      = document.getElementById('rfqLocation').value.trim() || 'Not specified';
+
+        templateId = 'template_4z7ohg7';
+        templateParams = {
+            from_name:  contactPerson,
+            from_email: email,
+            reply_to:   email,
+            to_name:    'KURMI PHARMAGRO Team',
+            message:
+                `FORMAL PRODUCT QUOTE (RFQ) — KURMI PHARMAGRO\n` +
+                `${'='.repeat(40)}\n\n` +
+                `Product / Formulation : ${product}\n` +
+                `Estimated Quantity    : ${quantity}\n` +
+                `Company / Entity      : ${company}\n` +
+                `Contact Person        : ${contactPerson}\n` +
+                `Email                 : ${email}\n` +
+                `Delivery Location     : ${location}\n\n` +
+                `Submitted via: kurmipharmagro.in`
+        };
     }
+
+    emailjs.send('service_04fnfch', templateId, templateParams)
+        .then(() => {
+            showToast(
+                "✅ Inquiry Sent!",
+                `Your ${formType} has been delivered to our team at info@kurmipharmagro.in. We'll respond within 24 hours.`
+            );
+            form.reset();
+            if (document.getElementById("rfqModal").classList.contains("active")) {
+                closeModal("rfqModal");
+            }
+        })
+        .catch((error) => {
+            console.error('EmailJS Error:', error);
+            showToast(
+                "❌ Send Failed",
+                "Could not send your inquiry. Please call us at +91 72081 06296 or WhatsApp us directly."
+            );
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
+        });
 }
+
 
 // Simulated PDF Catalog Download
 async function downloadProductList() {

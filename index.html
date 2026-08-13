@@ -262,12 +262,12 @@
                         <form id="b2bQuickForm" onsubmit="handleFormSubmit(event, 'B2B Quick Inquiry')">
                             <div class="form-group">
                                 <label class="form-label">Full Name / Entity Contact</label>
-                                <input type="text" class="form-control" required placeholder="e.g. Dr. Rajesh Sharma / Apex Health Distributors">
+                                <input type="text" id="b2bName" class="form-control" required placeholder="e.g. Dr. Rajesh Sharma / Apex Health Distributors">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Business Type</label>
-                                <select class="form-control" required>
+                                <select id="b2bBusinessType" class="form-control" required>
                                     <option value="">Select Category</option>
                                     <option value="distributor">Regional Distributor / Stockist</option>
                                     <option value="institutional">Hospital / Clinic Procurement</option>
@@ -278,17 +278,17 @@
 
                             <div class="form-group">
                                 <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" required placeholder="name@company.com">
+                                <input type="email" id="b2bEmail" class="form-control" required placeholder="name@company.com">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Phone Number / WhatsApp</label>
-                                <input type="tel" class="form-control" required placeholder="+91 98765 00000">
+                                <input type="tel" id="b2bPhone" class="form-control" required placeholder="+91 98765 00000">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Product Lines of Interest</label>
-                                <input type="text" class="form-control" placeholder="e.g. Antibiotics, Softgels, Multi-Vitamins">
+                                <input type="text" id="b2bProducts" class="form-control" placeholder="e.g. Antibiotics, Softgels, Multi-Vitamins">
                             </div>
 
                             <button type="submit" class="btn btn-primary" style="width: 100%;">
@@ -585,23 +585,23 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Estimated Order Quantity</label>
-                        <input type="text" class="form-control" required placeholder="e.g. 5,000 Boxes / Bulk Commercial">
+                        <input type="text" id="rfqQuantity" class="form-control" required placeholder="e.g. 5,000 Boxes / Bulk Commercial">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Company / Entity Name</label>
-                        <input type="text" class="form-control" required placeholder="Your Pharmacy / Hospital / Firm Name">
+                        <input type="text" id="rfqCompany" class="form-control" required placeholder="Your Pharmacy / Hospital / Firm Name">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Contact Person Name</label>
-                        <input type="text" class="form-control" required placeholder="Full Name">
+                        <input type="text" id="rfqContactPerson" class="form-control" required placeholder="Full Name">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email & Phone</label>
-                        <input type="email" class="form-control" required placeholder="email@domain.com">
+                        <input type="email" id="rfqEmail" class="form-control" required placeholder="email@domain.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Delivery Location / Port</label>
-                        <input type="text" class="form-control" placeholder="City, State, Country">
+                        <input type="text" id="rfqLocation" class="form-control" placeholder="City, State, Country">
                     </div>
                     <button type="submit" class="btn btn-emerald" style="width: 100%; margin-top: 10px;">
                         <i class="bi bi-check-lg"></i> Submit Formal Request
@@ -624,6 +624,13 @@
 
     <!-- PDF Generation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ⚠️ REPLACE THE VALUE BELOW WITH YOUR EMAILJS PUBLIC KEY
+        // Find it at: https://dashboard.emailjs.com/admin/account
+        emailjs.init("-Uwfciv5I290o0EOi");
+    </script>
     <!-- Application JavaScript Logic -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
