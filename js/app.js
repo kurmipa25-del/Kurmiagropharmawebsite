@@ -346,6 +346,8 @@ function handleFormSubmit(event, formType) {
         const company       = document.getElementById('rfqCompany').value.trim();
         const contactPerson = document.getElementById('rfqContactPerson').value.trim();
         const email         = document.getElementById('rfqEmail').value.trim();
+        const phoneInput    = document.getElementById('rfqPhone');
+        const phone         = phoneInput ? phoneInput.value.trim() : 'Not specified';
         const location      = document.getElementById('rfqLocation').value.trim() || 'Not specified';
 
         templateId = 'template_4z7ohg7';
@@ -362,6 +364,7 @@ function handleFormSubmit(event, formType) {
                 `Company / Entity      : ${company}\n` +
                 `Contact Person        : ${contactPerson}\n` +
                 `Email                 : ${email}\n` +
+                `Phone / WhatsApp      : ${phone}\n` +
                 `Delivery Location     : ${location}\n\n` +
                 `Submitted via: kurmipharmagro.in`
         };
@@ -373,12 +376,12 @@ function handleFormSubmit(event, formType) {
 
     sendEmailWithTemplate(templateId)
         .catch((error) => {
-            // Automatic fallback if letter 'o' / number '0' in template_4z7ohg7 was ambiguous
-            if (error && error.status === 400 && templateId === 'template_4z7ohg7') {
-                return sendEmailWithTemplate('template_4z70hg7');
-            }
-            if (error && error.status === 400 && templateId === 'template_klv10og') {
-                return sendEmailWithTemplate('template_klv1oog');
+            // Automatic fallbacks for 'o' vs '0' in template IDs
+            if (error && error.status === 400) {
+                if (templateId === 'template_4z7ohg7') return sendEmailWithTemplate('template_4z70hg7');
+                if (templateId === 'template_4z70hg7') return sendEmailWithTemplate('template_4z7ohg7');
+                if (templateId === 'template_klv10og') return sendEmailWithTemplate('template_klv1oog');
+                if (templateId === 'template_klv1oog') return sendEmailWithTemplate('template_klv10og');
             }
             throw error;
         })
