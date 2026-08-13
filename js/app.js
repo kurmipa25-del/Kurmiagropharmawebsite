@@ -323,7 +323,7 @@ function handleFormSubmit(event, formType) {
         const phone    = document.getElementById('b2bPhone').value.trim();
         const products = document.getElementById('b2bProducts').value.trim() || 'Not specified';
 
-        templateId = 'template_klv1oog';
+        templateId = 'template_klv10og';
         templateParams = {
             from_name:  name,
             from_email: email,
@@ -367,7 +367,21 @@ function handleFormSubmit(event, formType) {
         };
     }
 
-    emailjs.send('service_04fnfch', templateId, templateParams, '-Uwfciv5I290o0EOi')
+    function sendEmailWithTemplate(tid) {
+        return emailjs.send('service_04fnfch', tid, templateParams, '-Uwfciv5I290o0EOi');
+    }
+
+    sendEmailWithTemplate(templateId)
+        .catch((error) => {
+            // Automatic fallback if letter 'o' / number '0' in template_4z7ohg7 was ambiguous
+            if (error && error.status === 400 && templateId === 'template_4z7ohg7') {
+                return sendEmailWithTemplate('template_4z70hg7');
+            }
+            if (error && error.status === 400 && templateId === 'template_klv10og') {
+                return sendEmailWithTemplate('template_klv1oog');
+            }
+            throw error;
+        })
         .then((res) => {
             console.log('EmailJS Success:', res);
             showToast(
