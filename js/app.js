@@ -367,8 +367,9 @@ function handleFormSubmit(event, formType) {
         };
     }
 
-    emailjs.send('service_04fnfch', templateId, templateParams)
-        .then(() => {
+    emailjs.send('service_04fnfch', templateId, templateParams, '-Uwfciv5I290o0EOi')
+        .then((res) => {
+            console.log('EmailJS Success:', res);
             showToast(
                 "✅ Inquiry Sent!",
                 `Your ${formType} has been delivered to our team at info@kurmipharmagro.in. We'll respond within 24 hours.`
@@ -380,9 +381,10 @@ function handleFormSubmit(event, formType) {
         })
         .catch((error) => {
             console.error('EmailJS Error:', error);
+            const errDetail = error.text || error.message || (typeof error === 'string' ? error : JSON.stringify(error));
             showToast(
                 "❌ Send Failed",
-                "Could not send your inquiry. Please call us at +91 72081 06296 or WhatsApp us directly."
+                `Error (${error.status || 'EmailJS'}): ${errDetail}. Please try again or WhatsApp us at +91 72081 06296.`
             );
         })
         .finally(() => {
