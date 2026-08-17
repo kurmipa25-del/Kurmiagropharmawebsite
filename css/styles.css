@@ -436,7 +436,7 @@ button, input, select, textarea {
 }
 
 @media (min-width: 1201px) {
-    .nav-whatsapp-link, .crm-nav-link {
+    .nav-whatsapp-link {
         display: none !important;
     }
 }
