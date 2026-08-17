@@ -318,6 +318,7 @@ button, input, select, textarea {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .brand-logo-img {
@@ -369,8 +370,9 @@ button, input, select, textarea {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 20px;
     list-style: none;
+    flex-wrap: nowrap;
 }
 
 .nav-link {
@@ -418,7 +420,14 @@ button, input, select, textarea {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+@media (min-width: 1081px) {
+    .nav-whatsapp-link {
+        display: none !important;
+    }
 }
 
 .mobile-toggle {
@@ -1771,8 +1780,8 @@ button, input, select, textarea {
    RESPONSIVE BREAKPOINTS — COMPREHENSIVE MOBILE FIX
    ============================================================ */
 
-/* --- Tablet (≤992px) --- */
-@media (max-width: 992px) {
+/* --- Tablet (≤1080px) --- */
+@media (max-width: 1080px) {
 
     /* Prevent any horizontal overflow */
     html, body {
@@ -1829,7 +1838,7 @@ button, input, select, textarea {
         padding: 10px 0;
     }
 
-    .nav-actions .btn-primary {
+    .nav-actions .btn {
         display: none;
     }
 

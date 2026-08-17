@@ -480,7 +480,7 @@ async function downloadProductList() {
         doc.setFontSize(7);
         doc.setTextColor(...midGray);
         doc.text('DR. KURMI\'S PHARMAGRO LLP  |  Shop no.3, Uttam Villa, Road no. 10, Daulat Nagar, Borivali East, Mumbai - 400066', margin, footerY);
-        doc.text('Phone: +91 73043 40591  |  Email: kurmipa25@gmail.com  |  WhatsApp: +91 73043 40591', margin, footerY + 3.5);
+        doc.text('Phone: +91 73043 40591  |  Email: info@kurmipharmagro.in  |  WhatsApp: +91 73043 40591', margin, footerY + 3.5);
 
         doc.text(`Page ${pageNum} of ${totalPages}`, pageW - margin, footerY + 1.5, { align: 'right' });
     }
@@ -583,7 +583,7 @@ async function downloadProductList() {
     doc.setTextColor(180, 200, 220);
     doc.setFontSize(7.5);
     doc.text('Shop no.3, Uttam Villa, Road no. 10, Daulat Nagar, Borivali East, Mumbai - 400066', pageW / 2, pageH - 19, { align: 'center' });
-    doc.text('Phone: +91 73043 40591  |  Email: kurmipa25@gmail.com  |  WhatsApp: +91 73043 40591', pageW / 2, pageH - 13, { align: 'center' });
+    doc.text('Phone: +91 73043 40591  |  Email: info@kurmipharmagro.in  |  WhatsApp: +91 73043 40591', pageW / 2, pageH - 13, { align: 'center' });
 
     doc.setFontSize(6.5);
     doc.setTextColor(100, 120, 140);
@@ -885,7 +885,7 @@ async function downloadProductList() {
     const contactItems = [
         ['Address:', 'Shop no.3, Uttam Villa, Road no. 10, Daulat Nagar, Borivali East, Mumbai - 400066'],
         ['Phone:', '+91 73043 40591'],
-        ['Email:', 'kurmipa25@gmail.com'],
+        ['Email:', 'info@kurmipharmagro.in'],
         ['WhatsApp:', '+91 73043 40591']
     ];
 

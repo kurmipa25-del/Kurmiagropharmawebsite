@@ -9,7 +9,7 @@ const COMPANY_INFO = {
     phone: "+91 73043 40591",
     whatsapp: "+91 73043 40591",
     whatsappLink: "https://wa.me/917304340591",
-    email: "kurmipa25@gmail.com",
+    email: "info@kurmipharmagro.in",
     origin: "Borivali East, Mumbai, India",
     address: "Shop no.3, Uttam Villa, Road no. 10, Daulat Nagar, Borivali East, Mumbai - 400066",
     segments: "B2C Consumer Care · Commercial Products",
