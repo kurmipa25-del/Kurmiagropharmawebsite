@@ -194,6 +194,55 @@ button, input, select, textarea {
     color: var(--navy-bg);
 }
 
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #ffffff !important;
+    border: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #20bd5a 0%, #0e7065 100%);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55);
+}
+
+.btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    border-radius: 50px;
+}
+
+.top-bar-order-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #ffffff !important;
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.top-bar-order-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+}
+
+.nav-whatsapp-link {
+    color: #25D366 !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 /* Top Notification Header Bar (Ultra Dark Matte Charcoal) */
 .top-bar {
     background: #0b0e14;
