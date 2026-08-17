@@ -340,6 +340,9 @@ function handleFormSubmit(event, formType) {
                 `Submitted via: kurmipharmagro.in`
         };
 
+        // Log to CRM
+        saveToCRM(name, `${phone} / ${email}`, 'B2B Quick Inquiry', products, `Business Type: ${bizType}`);
+
     } else if (formType === 'Formal Product Quote') {
         const product       = document.getElementById('rfqProductName').value.trim() || 'All Portfolios';
         const quantity      = document.getElementById('rfqQuantity').value.trim();
@@ -368,6 +371,36 @@ function handleFormSubmit(event, formType) {
                 `Delivery Location     : ${location}\n\n` +
                 `Submitted via: kurmipharmagro.in`
         };
+
+        // Log to CRM
+        saveToCRM(company, `${phone} / ${email}`, product, quantity, `Contact: ${contactPerson}. Location: ${location}`);
+    }
+
+    // Helper to log requests to shared localStorage database
+    function saveToCRM(client, contact, segment, qty, msg) {
+        try {
+            const orders = JSON.parse(localStorage.getItem("kurmi_crm_orders") || "[]");
+            const newId = `KP-ORD-${1024 + orders.length + Math.floor(Math.random() * 100)}`;
+            const now = new Date();
+            const dateStr = now.toISOString().replace('T', ' ').substring(0, 16);
+
+            const newOrder = {
+                id: newId,
+                client: client,
+                contact: contact,
+                segment: segment,
+                qty: qty,
+                msg: msg,
+                date: dateStr,
+                status: "pending"
+            };
+
+            orders.unshift(newOrder);
+            localStorage.setItem("kurmi_crm_orders", JSON.stringify(orders));
+            console.log("Successfully logged order to CRM database:", newOrder);
+        } catch (e) {
+            console.error("Failed to log order to CRM:", e);
+        }
     }
 
     function sendEmailWithTemplate(tid) {

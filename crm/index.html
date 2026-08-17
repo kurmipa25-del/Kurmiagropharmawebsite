@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Kurmi's Pharmagro | CRM Order & MR Portal</title>
+    <!-- Outfit Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CRM Styles -->
+    <link rel="stylesheet" href="crm.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="crm-sidebar">
+        <a href="../index.html" class="sidebar-brand">
+            <i class="bi bi-prescription2 brand-icon"></i>
+            <span class="brand-title">DR. KURMI'S CRM</span>
+        </a>
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-tab="dashboard">
+                <a href="#dashboard"><i class="bi bi-speedometer2"></i> Admin Dashboard</a>
+            </li>
+            <li class="menu-item" data-tab="orders">
+                <a href="#orders"><i class="bi bi-cart3"></i> Order Tracker</a>
+            </li>
+            <li class="menu-item" data-tab="mr-portal">
+                <a href="#mr-portal"><i class="bi bi-people-fill"></i> MR Visit Portal</a>
+            </li>
+            <li class="menu-item">
+                <a href="../index.html"><i class="bi bi-arrow-left-circle"></i> Back to Website</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main class="crm-main">
+        <!-- CRM Top Header -->
+        <header class="crm-header">
+            <div class="header-title">
+                <h1 id="pageTitle">Admin Dashboard</h1>
+            </div>
+            <div class="header-actions">
+                <span class="role-badge" id="roleBadge">
+                    <i class="bi bi-shield-lock-fill"></i> Manager Mode
+                </span>
+                <button class="btn btn-primary btn-sm" onclick="openOrderModal()">
+                    <i class="bi bi-plus-circle"></i> Log New Order
+                </button>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Section -->
+        <div class="crm-content">
+
+            <!-- TAB 1: ADMIN DASHBOARD -->
+            <section class="tab-content active" id="tab-dashboard">
+                <!-- KPI Counters Row -->
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Total Orders Booked</span>
+                            <i class="bi bi-cart-check kpi-icon"></i>
+                        </div>
+                        <div class="kpi-value" id="kpiTotalOrders">0</div>
+                        <div class="kpi-footer">Updated in real-time from website</div>
+                    </div>
+                    <div class="kpi-card emerald">
+                        <div class="kpi-header">
+                            <span>Total MR Field Visits</span>
+                            <i class="bi bi-geo-alt-fill kpi-icon"></i>
+                        </div>
+                        <div class="kpi-value" id="kpiTotalVisits">0</div>
+                        <div class="kpi-footer">Completed by Medical Reps today</div>
+                    </div>
+                    <div class="kpi-card amber">
+                        <div class="kpi-header">
+                            <span>Pending Inquiries</span>
+                            <i class="bi bi-clock-history kpi-icon"></i>
+                        </div>
+                        <div class="kpi-value" id="kpiPendingOrders">0</div>
+                        <div class="kpi-footer">Requires confirm/verify status</div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left: Recent Active Orders -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <h3 class="panel-title"><i class="bi bi-receipt-cutoff"></i> Recent Client Inquiries &amp; Orders</h3>
+                            <button class="btn btn-outline btn-sm" onclick="switchTab('orders')">View All</button>
+                        </div>
+                        <div class="table-container">
+                            <table class="crm-table">
+                               <thead>
+                                   <tr>
+                                       <th>Client</th>
+                                       <th>Segment</th>
+                                       <th>Quantity</th>
+                                       <th>Date</th>
+                                       <th>Status</th>
+                                   </tr>
+                               </thead>
+                               <tbody id="dashboardOrdersTableBody">
+                                   <!-- JavaScript renders recent orders -->
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: MR Visit Progress & Routes -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <h3 class="panel-title"><i class="bi bi-clipboard2-check"></i> Active MR Route Target</h3>
+                        </div>
+                        
+                        <div class="crm-form-group progress-gauge" style="margin-bottom: 24px;">
+                            <div class="gauge-header">
+                                <span>Doctor Coverage Index</span>
+                                <span id="gaugeCoveragePct">65%</span>
+                            </div>
+                            <div class="gauge-bar-bg">
+                                <div class="gauge-bar-fill" id="gaugeCoverageFill" style="width: 65%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="panel-header" style="margin-top: 10px;">
+                            <h4 class="panel-title" style="font-size: 0.95rem;"><i class="bi bi-activity"></i> Live MR Check-Ins</h4>
+                        </div>
+                        <div class="visit-list" id="dashboardVisitsList">
+                            <!-- JavaScript renders recent visits -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: ORDER TRACKER -->
+            <section class="tab-content" id="tab-orders">
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <h3 class="panel-title"><i class="bi bi-cart3"></i> Master Order Database</h3>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-outline btn-sm" onclick="clearCRMData()">
+                                <i class="bi bi-trash"></i> Reset Database
+                            </button>
+                            <button class="btn btn-primary btn-sm" onclick="openOrderModal()">
+                                <i class="bi bi-plus"></i> Add Manual Order
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="crm-table">
+                           <thead>
+                               <tr>
+                                   <th>Order ID</th>
+                                   <th>Client / Company</th>
+                                   <th>Contact</th>
+                                   <th>Product Segment</th>
+                                   <th>Message/Req</th>
+                                   <th>Date</th>
+                                   <th>Status Action</th>
+                               </tr>
+                           </thead>
+                           <tbody id="masterOrdersTableBody">
+                               <!-- JavaScript renders master orders -->
+                           </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: MR VISIT PORTAL -->
+            <section class="tab-content" id="tab-mr-portal">
+                <div class="dashboard-grid" style="grid-template-columns: 1fr 2fr;">
+                    <!-- Left: Log Visit Check-In -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <h3 class="panel-title"><i class="bi bi-geo-alt"></i> Log Doctor Visit check-in</h3>
+                        </div>
+                        <form id="mrVisitForm" onsubmit="handleVisitSubmit(event)">
+                            <div class="crm-form-group">
+                                <label for="mrName">MR Representative Name</label>
+                                <select id="mrName" class="crm-form-select" required>
+                                    <option value="Amit Sharma">Amit Sharma (Mumbai North)</option>
+                                    <option value="Vijay Patil">Vijay Patil (Mumbai South)</option>
+                                    <option value="Sneha Mehta">Sneha Mehta (Mumbai Central)</option>
+                                    <option value="Rajesh Kurmi">Rajesh Kurmi (Executive Director)</option>
+                                </select>
+                            </div>
+                            <div class="crm-form-group">
+                                <label for="doctorName">Doctor Name</label>
+                                <input type="text" id="doctorName" class="crm-form-input" placeholder="e.g. Dr. A. K. Roy" required>
+                            </div>
+                            <div class="crm-form-group">
+                                <label for="clinicLocation">Clinic/Pharmacy Address</label>
+                                <input type="text" id="clinicLocation" class="crm-form-input" placeholder="e.g. Clinic no 4, Borivali East" required>
+                            </div>
+                            <div class="crm-form-group">
+                                <label for="visitNotes">Discussion Notes &amp; Sample Requested</label>
+                                <textarea id="visitNotes" class="crm-form-textarea" rows="3" placeholder="e.g. Requested sample of Multivitamin Softgels and catalog copies" required></textarea>
+                            </div>
+                            <div class="crm-form-group">
+                                <label for="visitOrder">Booking Order Amount (Optional)</label>
+                                <input type="text" id="visitOrder" class="crm-form-input" placeholder="e.g. 50 Boxes Softgels / No Order">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="bi bi-check2-circle"></i> Log Visit Check-in
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: MR Check-ins Log Database -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <h3 class="panel-title"><i class="bi bi-map-fill"></i> MR Territory Visit Log</h3>
+                            <button class="btn btn-outline btn-sm" onclick="clearVisitsData()">Clear Visit Logs</button>
+                        </div>
+                        <div class="table-container">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>MR Representative</th>
+                                        <th>Doctor / Client</th>
+                                        <th>Location / Clinic</th>
+                                        <th>Route Status</th>
+                                        <th>Notes &amp; Samples</th>
+                                        <th>Order Booked</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="masterVisitsTableBody">
+                                    <!-- JavaScript renders MR visit records -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- MODAL: LOG MANUAL ORDER -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+            <h3 style="margin-bottom: 20px; color:#fff;"><i class="bi bi-cart-plus"></i> Add Manual Order Record</h3>
+            <form id="manualOrderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="crm-form-group">
+                    <label for="orderClient">Client Name / Hospital</label>
+                    <input type="text" id="orderClient" class="crm-form-input" placeholder="e.g. Lifeline Pharmacy" required>
+                </div>
+                <div class="crm-form-group">
+                    <label for="orderContact">Contact Phone</label>
+                    <input type="text" id="orderContact" class="crm-form-input" placeholder="e.g. +91 99999 88888" required>
+                </div>
+                <div class="crm-form-group">
+                    <label for="orderSegment">Product Segment</label>
+                    <select id="orderSegment" class="crm-form-select" required>
+                        <option value="Prescription Pharma">Prescription Pharma</option>
+                        <option value="Nutraceutical Softgels">Nutraceutical Softgels</option>
+                        <option value="OTC & Pain Relief">OTC &amp; Pain Relief</option>
+                        <option value="Hospital Supplies">Hospital Supplies</option>
+                    </select>
+                </div>
+                <div class="crm-form-group">
+                    <label for="orderQty">Quantity/Details</label>
+                    <input type="text" id="orderQty" class="crm-form-input" placeholder="e.g. 100 Boxes / 500 Vials" required>
+                </div>
+                <div class="crm-form-group">
+                    <label for="orderMsg">Custom Message / Notes</label>
+                    <textarea id="orderMsg" class="crm-form-textarea" rows="2" placeholder="e.g. Dispatch urgently via local courier"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="bi bi-save"></i> Save Order Record
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom CRM Script Logic -->
+    <script src="crm.js"></script>
+</body>
+</html>
