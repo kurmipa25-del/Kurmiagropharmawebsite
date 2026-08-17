@@ -424,8 +424,8 @@ button, input, select, textarea {
     flex-shrink: 0;
 }
 
-@media (min-width: 1081px) {
-    .nav-whatsapp-link {
+@media (min-width: 1201px) {
+    .nav-whatsapp-link, .crm-nav-link {
         display: none !important;
     }
 }
@@ -1780,8 +1780,8 @@ button, input, select, textarea {
    RESPONSIVE BREAKPOINTS — COMPREHENSIVE MOBILE FIX
    ============================================================ */
 
-/* --- Tablet (≤1080px) --- */
-@media (max-width: 1080px) {
+/* --- Tablet (≤1200px) --- */
+@media (max-width: 1200px) {
 
     /* Prevent any horizontal overflow */
     html, body {

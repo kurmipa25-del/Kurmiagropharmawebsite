@@ -328,6 +328,48 @@ function clearVisitsData() {
     }
 }
 
-// Run on page load
-initDatabase();
-renderAll();
+// Authenticated Lifecycle Control
+function checkLogin() {
+    const isLoggedIn = sessionStorage.getItem("kurmi_crm_logged_in") === "true";
+    const appContainer = document.getElementById("crmAppContainer");
+    const loginWrapper = document.getElementById("loginWrapper");
+
+    if (isLoggedIn) {
+        if (appContainer) appContainer.style.display = "flex";
+        if (loginWrapper) loginWrapper.style.display = "none";
+        initDatabase();
+        renderAll();
+    } else {
+        if (appContainer) appContainer.style.display = "none";
+        if (loginWrapper) loginWrapper.style.display = "flex";
+    }
+}
+
+// Handle CRM Form Sign In
+function handleCrmLogin(e) {
+    e.preventDefault();
+    const userInput = document.getElementById("loginUser").value.trim();
+    const passInput = document.getElementById("loginPass").value.trim();
+    const errorMsg = document.getElementById("loginError");
+
+    // Case insensitive username "KURMI", password "12344321"
+    if (userInput.toUpperCase() === "KURMI" && passInput === "12344321") {
+        sessionStorage.setItem("kurmi_crm_logged_in", "true");
+        if (errorMsg) errorMsg.style.display = "none";
+        document.getElementById("crmLoginForm").reset();
+        checkLogin();
+    } else {
+        if (errorMsg) errorMsg.style.display = "flex";
+        document.getElementById("loginPass").value = "";
+    }
+}
+
+// Log Out function
+function handleCrmLogout(e) {
+    if (e) e.preventDefault();
+    sessionStorage.removeItem("kurmi_crm_logged_in");
+    checkLogin();
+}
+
+// Run check on page load
+checkLogin();
